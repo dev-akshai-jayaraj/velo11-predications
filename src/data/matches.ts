@@ -12,7 +12,7 @@ export const matches: Match[] = [
     competition: "FIFA World Cup 2026",
     teamA: "Spain",
     teamB: "Belgium",
-    status: "upcoming",
+    status: "completed",
     prediction: {
       teamA: {
         primary: {
@@ -83,7 +83,40 @@ export const matches: Match[] = [
         },
       },
     },
-    actual: null,
+    actual: {
+      teamA: {
+        formation: "4-2-3-1",
+        players: [
+          "Unai Simon",
+          "Porro",
+          "Cubarsi",
+          "Laporte",
+          "Cucurella",
+          "Rodri",
+          "Fabian Ruiz",
+          "Yamal",
+          "Dani Olmo",
+          "Baena",
+          "Oyarzabal",
+        ],
+      },
+      teamB: {
+        formation: "4-2-3-1",
+        players: [
+          "Courtois",
+          "De Cuyper",
+          "Mechele",
+          "Ngoy",
+          "Castagne",
+          "Vanaken",
+          "Raskin",
+          "Trossard",
+          "De Bruyne",
+          "Doku",
+          "De Ketelaere",
+        ],
+      },
+    },
   },
   {
     id: "2026-07-12-nor-eng",
