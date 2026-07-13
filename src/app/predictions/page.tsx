@@ -7,7 +7,12 @@ export const metadata: Metadata = {
 };
 
 export default function PredictionsPage() {
-  const sorted = [...matches].sort((a, b) => a.date.localeCompare(b.date));
+  const upcoming = matches
+    .filter((m) => m.status === "upcoming")
+    .sort((a, b) => a.date.localeCompare(b.date));
+  const historical = matches
+    .filter((m) => m.status === "completed")
+    .sort((a, b) => b.date.localeCompare(a.date));
 
   return (
     <div className="flex flex-col gap-8">
@@ -18,11 +23,30 @@ export default function PredictionsPage() {
         </p>
       </div>
 
-      <div className="flex flex-col gap-6">
-        {sorted.map((match) => (
-          <MatchCard key={match.id} match={match} />
-        ))}
-      </div>
+      {upcoming.length > 0 && (
+        <section className="flex flex-col gap-6">
+          <h2 className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+            Upcoming
+          </h2>
+          {upcoming.map((match) => (
+            <MatchCard key={match.id} match={match} />
+          ))}
+        </section>
+      )}
+
+      {historical.length > 0 && (
+        <section className="flex flex-col gap-6">
+          <div className="flex items-center gap-3">
+            <h2 className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+              Historical Predictions
+            </h2>
+            <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
+          </div>
+          {historical.map((match) => (
+            <MatchCard key={match.id} match={match} />
+          ))}
+        </section>
+      )}
     </div>
   );
 }
